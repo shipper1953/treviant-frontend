@@ -1,15 +1,23 @@
-# Stage 1: Build the Vite app with environment variables
-FROM node:18-alpine AS builder
+# syntax=docker/dockerfile:1
+FROM node:18.20.3-alpine AS builder
+
 WORKDIR /app
 
-# Inject VITE environment variable here — adjust URL if needed
-ENV VITE_BACKEND_URL=https://treviant-backend-175968122516.us-central1.run.app
+COPY package*.json ./
+RUN npm install
 
 COPY . .
-RUN npm install
 RUN npm run build
 
-# Stage 2: Serve using nginx
-FROM nginx:stable-alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/nginx.conf
+# Deploy a lightweight server using node_modules/.bin/serve
+FROM node:18.20.3-alpine
+
+WORKDIR /app
+
+RUN npm install -g serve
+
+COPY --from=builder /app/dist ./dist
+
+EXPOSE 3000
+
+CMD ["serve", "-s", "dist", "-l", "3000"]

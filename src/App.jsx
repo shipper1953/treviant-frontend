@@ -7,7 +7,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<AdminLogin />} />
+      <Route path="*" element={<h1 className="text-center text-3xl mt-10">404 - Page Not Found</h1>} />
         <Route
           path="/dashboard"
           element={
