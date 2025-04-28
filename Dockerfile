@@ -1,22 +1,15 @@
-# --- Builder Stage ---
-FROM node:18 AS builder
-
+# Stage 1: Build the Vite app with environment variables
+FROM node:18-alpine AS builder
 WORKDIR /app
-COPY . .
 
+# Inject VITE environment variable here — adjust URL if needed
+ENV VITE_BACKEND_URL=https://treviant-backend-175968122516.us-central1.run.app
+
+COPY . .
 RUN npm install
 RUN npm run build
 
-# --- Production Stage ---
-FROM nginx:alpine
-
-# Copy built React files
-COPY --from=builder /app/build /usr/share/nginx/html
-
-# Custom Nginx config (optional, fallback to index.html for React routing)
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Expose port
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+# Stage 2: Serve using nginx
+FROM nginx:stable-alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf

@@ -1,15 +1,19 @@
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
-        treviantBlue: "#1e3a8a",
-        treviantGray: "#6b7280",
-        treviantBlack: "#111827",
-        treviantWhite: "#f9fafb",
+        treviantNavy: "#1a253f",
+        treviantGray: "#d9d9d9",
+        treviantBlack: "#101010",
+        treviantWhite: "#ffffff",
+        treviantGreen: "#0b5e4a",
       },
     },
   },
   plugins: [],
-}
+};
