@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from './userSlice';
 import { useNavigate } from 'react-router-dom';
-import api from '../utils/api';
+import api from '../../utils/api';
 
 export default function UserLogin() {
   const [emailInput, setEmailInput] = useState('');

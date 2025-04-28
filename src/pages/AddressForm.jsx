@@ -1,4 +1,4 @@
-import AutocompleteInput from './AutocompleteInput';
+import AutocompleteInput from '../components/AutocompleteInput';
 import { useAddressAutocomplete } from '../hooks/useAddressAutocomplete';
 
 export default function AddressForm({ title, address, setAddress }) {
