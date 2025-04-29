@@ -1,13 +1,9 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import commonjs from 'vite-plugin-commonjs'; // ✅ NEW
 
 export default defineConfig({
-  plugins: [
-    react(),
-    commonjs(), // ✅ ADDED
-  ],
+  plugins: [react()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
@@ -15,5 +11,8 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
+    rollupOptions: {
+      external: ['react-redux'], // <== FORCE Vite to treat it as external
+    },
   },
 });
