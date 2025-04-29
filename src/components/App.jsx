@@ -1,5 +1,5 @@
-import Dashboard from '../Dashboard';
-import AdminLogin from '../AdminLogin';
+import Dashboard from '../pages/Dashboard';
+import AdminLogin from '../pages/AdminLogin';
 import ProtectedRoute from './ProtectedRoute';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
