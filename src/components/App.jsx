@@ -1,13 +1,17 @@
-import Dashboard from '../pages/Dashboard';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AdminLogin from '../pages/AdminLogin';
-import ProtectedRoute from './ProtectedRoute';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Dashboard from '../pages/Dashboard';
+import ProtectedRoute from '../components/ProtectedRoute';
 
-export default function App() {
+const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<AdminLogin />} />
+        {/* Public Route */}
+        <Route path="/admin-login" element={<AdminLogin />} />
+
+        {/* Protected Route */}
         <Route
           path="/"
           element={
@@ -17,6 +21,9 @@ export default function App() {
           }
         />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
-}
+};
+
+export default App;
+
