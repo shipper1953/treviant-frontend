@@ -1,11 +1,11 @@
+import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 const ProtectedRoute = ({ children }) => {
-  const user = useSelector((state) => state.user.currentUser);
+  const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
-  if (!user) {
-    return <Navigate to="/" replace />;
+  if (!isAdmin) {
+    return <Navigate to="/admin-login" replace />;
   }
 
   return children;
