@@ -11,8 +11,8 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    rollupOptions: {
-      external: ['react-redux'], // <== FORCE Vite to treat it as external
-    },
   },
+  optimizeDeps: {
+    include: ["react-redux", "@reduxjs/toolkit"]
+  }
 });
