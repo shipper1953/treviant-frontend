@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Dashboard from './pages/Dashboard';
-import AdminLogin from './pages/AdminLogin';
-import ProtectedRoute from './components/ProtectedRoute';
+import Dashboard from '../pages/Dashboard';
+import AdminLogin from '../pages/AdminLogin';
+import ProtectedRoute from './ProtectedRoute';
 
 export default function App() {
   return (
