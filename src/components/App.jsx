@@ -1,8 +1,7 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Dashboard from '../pages/Dashboard';
-import AdminLogin from '../pages/AdminLogin';
+import Dashboard from '../Dashboard';
+import AdminLogin from '../AdminLogin';
 import ProtectedRoute from './ProtectedRoute';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 export default function App() {
   return (
