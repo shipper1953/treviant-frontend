@@ -1,22 +1,22 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import commonjs from 'vite-plugin-commonjs'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  plugins: [react(), commonjs()],
-  resolve: {
-    conditions: ['import', 'require'],
-    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
-  },
+  plugins: [react()],
   optimizeDeps: {
     include: ['react-redux'],
-    force: true
+    exclude: ['follow-redirects']
   },
   build: {
+    rollupOptions: {
+      external: ['follow-redirects']
+    },
     commonjsOptions: {
-      include: [/node_modules/],
-      transformMixedEsModules: true
+      exclude: ['follow-redirects']
     }
+  },
+  server: {
+    port: 3000
   }
-})
+});
 
