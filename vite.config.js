@@ -9,10 +9,13 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
+  optimizeDeps: {
+    include: ['react-redux'],
+  },
   build: {
     outDir: 'dist',
+    rollupOptions: {
+      external: ['axios'], // Optional, but defensive
+    },
   },
-  optimizeDeps: {
-    include: ["react-redux", "@reduxjs/toolkit"]
-  }
 });
