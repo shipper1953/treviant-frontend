@@ -1,10 +1,13 @@
-// vite.config.js
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import commonjs from 'vite-plugin-commonjs';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    commonjs()
+  ],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
@@ -12,10 +15,8 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    emptyOutDir: true,
-  },
-  server: {
-    port: 3000,
-    open: true,
+    rollupOptions: {
+      external: ['react-redux'],
+    },
   },
 });

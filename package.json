@@ -22,7 +22,8 @@
                 "postcss": "^8.4.35",
                 "rollup": "^3.29.4",
                 "tailwindcss": "^3.4.3",
-                "vite": "^6.3.3"
+                "vite": "^6.3.3",
+                "vite-plugin-commonjs": "^0.10.4"
         },
         "engines": {
                 "node": ">=20.0.0"
