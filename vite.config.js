@@ -13,9 +13,12 @@ export default defineConfig({
     include: ['react-redux'],
   },
   build: {
-    outDir: 'dist',
     commonjsOptions: {
-      include: [/node_modules/],
+      include: [/node_modules/, /react-redux/],
+      transformMixedEsModules: true,
+    },
+    rollupOptions: {
+      external: [],
     },
   },
 })
