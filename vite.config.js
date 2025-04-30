@@ -1,22 +1,22 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import path from 'path';
-import commonjs from 'vite-plugin-commonjs';
+// vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import path from 'path'
 
 export default defineConfig({
-  plugins: [
-    react(),
-    commonjs()
-  ],
+  plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
+      '@': path.resolve(__dirname, 'src')
+    }
   },
   build: {
     outDir: 'dist',
-    rollupOptions: {
-      external: ['react-redux'],
-    },
+    emptyOutDir: true,
   },
-});
+  server: {
+    fs: {
+      strict: true,
+    }
+  }
+})
