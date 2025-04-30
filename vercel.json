@@ -1,13 +1,30 @@
 {
-    "rewrites": [
-      {
-        "source": "/api/:match*",
-        "destination": "https://treviant-backend-kwrfr7l7lq-uc.a.run.app/api/:match*"
-      },
+    "buildCommand": "npm run build",
+    "outputDirectory": "dist",
+    "cleanUrls": true,
+    "headers": [
       {
         "source": "/(.*)",
-        "destination": "/index.html"
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "no-store"
+          },
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          },
+          {
+            "key": "Access-Control-Allow-Methods",
+            "value": "GET,POST,PUT,DELETE,OPTIONS"
+          },
+          {
+            "key": "Access-Control-Allow-Headers",
+            "value": "Content-Type, Authorization"
+          }
+        ]
       }
     ]
   }
+  
   
