@@ -1,20 +1,22 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'path'
+import commonjs from 'vite-plugin-commonjs'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), commonjs()],
   resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
-    },
+    conditions: ['import', 'require'],
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json']
   },
   optimizeDeps: {
     include: ['react-redux'],
+    force: true
   },
   build: {
     commonjsOptions: {
-      include: [/node_modules/, /react-redux/],
-    },
-  },
+      include: [/node_modules/],
+      transformMixedEsModules: true
+    }
+  }
 })
+
