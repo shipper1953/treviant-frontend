@@ -1,16 +1,13 @@
 {
-    "build": {
-      "env": {
-        "NODE_VERSION": "20"
-      }
-    },
     "rewrites": [
+      {
+        "source": "/api/:match*",
+        "destination": "https://treviant-backend-kwrfr7l7lq-uc.a.run.app/api/:match*"
+      },
       {
         "source": "/(.*)",
         "destination": "/index.html"
       }
-    ],
-    "cleanUrls": true,
-    "trailingSlash": false
+    ]
   }
   
