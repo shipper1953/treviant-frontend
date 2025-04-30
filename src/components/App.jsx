@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AdminLogin from '../pages/AdminLogin';
+import AdminLogin from './AdminLogin';
 import Dashboard from '../pages/Dashboard';
 import ProtectedRoute from '../components/ProtectedRoute';
 
