@@ -1,7 +1,6 @@
-// src/components/AdminLogin.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api from '../utils/api';
+import axios from 'axios';
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -17,7 +16,12 @@ const AdminLogin = () => {
     setError('');
 
     try {
-      const res = await api.post('/auth/login', credentials);
+      const res = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/auth/login`,
+        credentials,
+        { withCredentials: true }
+      );
+
       const { token, user } = res.data;
 
       if (!user.isAdmin) {
@@ -28,7 +32,7 @@ const AdminLogin = () => {
       localStorage.setItem('token', token);
       navigate('/admin/dashboard');
     } catch (err) {
-      console.error(err);
+      console.error('Login Error:', err);
       setError(err.response?.data?.message || 'Login failed.');
     }
   };
