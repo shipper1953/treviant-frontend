@@ -1,13 +1,15 @@
 // src/utils/api.js
 import axios from 'axios';
 
-const baseURL = import.meta.env.VITE_BACKEND_URL;
-if (!baseURL) {
-  throw new Error('VITE_BACKEND_URL is not defined in your environment variables.');
+const baseURL = import.meta.env.VITE_BACKEND_URL?.trim();
+if (!baseURL || !baseURL.startsWith('http')) {
+  throw new Error(
+    `Invalid VITE_BACKEND_URL: "${import.meta.env.VITE_BACKEND_URL}". Check your .env file.`
+  );
 }
 
 const api = axios.create({
-  baseURL: import.meta.env.VITE_BACKEND_URL,
+  baseURL,
 });
 
 // Automatically attach JWT if available
@@ -26,10 +28,9 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    // Log out user if unauthorized
     if (error.response?.status === 401) {
       localStorage.removeItem('token');
-      window.location.href = '/login'; // or /admin/login depending on context
+      window.location.href = '/login'; // Adjust if using admin paths
     }
     return Promise.reject(error);
   }
