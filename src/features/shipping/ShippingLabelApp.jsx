@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { motion, AnimatePresence } from 'framer-motion';
-import api from '@/utils/api';
+import api from '../utils/api';
 import AutocompleteInput from '../../components/AutocompleteInput';
 import { useAddressAutocomplete } from '../../hooks/useAddressAutocomplete';
 import Layout from '../../components/Layout';
