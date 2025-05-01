@@ -7,10 +7,7 @@ if (!baseURL) {
 }
 
 const api = axios.create({
-  baseURL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
+  baseURL: import.meta.env.VITE_BACKEND_URL,
 });
 
 // Automatically attach JWT if available
