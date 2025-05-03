@@ -22,12 +22,12 @@ const AdminLogin = () => {
         { withCredentials: true }
       );
 
-      const { token, user } = res.data;
-
-    if (!res.data.isAdmin) {
-      setError('Access denied: Admin only.');
-      return;
-    }
+      const user = response?.data?.user;
+      if (user?.isAdmin) {
+        // ✅ authenticated
+      } else {
+        console.error('Login failed: User is not admin or invalid response', user);
+      }
 
       localStorage.setItem('token', token);
       navigate('/admin/dashboard');
