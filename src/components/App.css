@@ -11,7 +11,7 @@ button {
 }
 
 .card {
-  @apply bg-white p-8 rounded-2xl shadow-xl max-w-md w-full;
+  @apply bg-treviantWhite p-8 rounded-2xl shadow-xl max-w-md w-full;
 }
 
 .loader {

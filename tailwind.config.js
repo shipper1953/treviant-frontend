@@ -1,5 +1,9 @@
+/** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
@@ -8,8 +12,7 @@ export default {
         treviantBlack: "#101010",
         treviantWhite: "#ffffff",
         treviantGreen: "#0b5e4a",
-      },
     },
   },
   plugins: [],
-};
+}}
