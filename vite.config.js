@@ -1,22 +1,18 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
+// filepath: /Users/taylorgregg/treviant-shipping-app/frontend/vite.config.js
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    include: ['react-redux'],
-    exclude: ['follow-redirects']
+    include: ['react-redux'], // Add this line
   },
   build: {
     rollupOptions: {
-      external: ['follow-redirects']
+      external: [],
     },
-    commonjsOptions: {
-      exclude: ['follow-redirects']
-    }
   },
   server: {
-    port: 3000
-  }
+    port: 3000,
+  },
 });
-
