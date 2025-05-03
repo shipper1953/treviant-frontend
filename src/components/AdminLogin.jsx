@@ -24,10 +24,10 @@ const AdminLogin = () => {
 
       const { token, user } = res.data;
 
-      if (!user.isAdmin) {
-        setError('Access denied: Admin only.');
-        return;
-      }
+    if (!res.data.isAdmin) {
+      setError('Access denied: Admin only.');
+      return;
+    }
 
       localStorage.setItem('token', token);
       navigate('/admin/dashboard');
